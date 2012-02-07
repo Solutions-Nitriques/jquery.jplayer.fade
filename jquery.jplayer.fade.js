@@ -93,6 +93,8 @@
 			if (x <= limit) {
 				var v = from + m*x;
 				
+				player.data('is-fading', true);
+				
 				if (isNaN(v)) {
 					consoleLog ('[player] #' + player.attr('id') + ' ***NaN', debug);
 				} else {
@@ -113,6 +115,8 @@
 				setVolume(player, to);
 				
 				consoleLog ('[player] #' + player.attr('id') + ' volume set to ' + to + ' -- end', debug);
+				
+				player.data('is-fading', false);
 				
 				if ($.isFunction(callback)) {
 					callback.call(player);
@@ -155,6 +159,10 @@
 		return fadeToPlayer(player, dur, _in, _out, callback, debug);
 	};
 	
+	function playerIsFading(player) {
+		return !!player.data('is-fading');
+	}
+	
 	
 	// actual plugin
 	if ($.jPlayer != undefined && $.jPlayer.fadeTo === undefined) {
@@ -162,7 +170,8 @@
 		$.extend($.jPlayer, {
 			fadeTo:		fadeToPlayer,
 			fadeOut: 	fadeOutPlayer,
-			fadeIn: 	fadeInPlayer
+			fadeIn: 	fadeInPlayer,
+			isFading:	playerIsFading,
 		});
 		// add function to a new object JPlayerFade
 		if (!$.fn.jPlayerFade) {
@@ -179,6 +188,9 @@
 						},
 						out: function (dur, from, to, callback) {
 							return $.jPlayer.fadeOut(t, dur, from, to, callback, debug);
+						},
+						isFading: function () {
+							return playerIsFading(t);
 						}
 					};
 				}
