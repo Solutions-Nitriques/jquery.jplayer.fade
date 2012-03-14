@@ -171,7 +171,7 @@
 			fadeTo:		fadeToPlayer,
 			fadeOut: 	fadeOutPlayer,
 			fadeIn: 	fadeInPlayer,
-			isFading:	playerIsFading,
+			isFading:	playerIsFading
 		});
 		// add function to a new object JPlayerFade
 		if (!$.fn.jPlayerFade) {
