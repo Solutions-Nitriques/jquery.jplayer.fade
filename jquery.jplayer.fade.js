@@ -134,6 +134,11 @@
 			
 		} else {
 			consoleLog ('[player] #' + player.attr('id') + ' fade out skipped', debug);
+			
+			// assure we call the callback here too
+			if ($.isFunction(callback)) {
+				callback.call(player);
+			}
 		}
 		
 		return player;
