@@ -11,5 +11,4 @@ Version: 1.0
 
 ### USAGE ###
 
-See the [plugin file](https://github.com/Solutions-Nitriques/jquery.jplayer.fade/blob/master/jquery.jplayer.fade.js)
- 
+See the [plugin file](https://github.com/Solutions-Nitriques/jquery.jplayer.fade/blob/master/src/jquery.jplayer.fade.js)
